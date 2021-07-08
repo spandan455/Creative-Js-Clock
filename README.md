@@ -3,3 +3,6 @@
 
 # Preview at
 - https://mayankcoder123.github.io/JavaScript_Clock/
+
+# About code
+- code free to use for anything
