@@ -1,13 +1,31 @@
-setInterval(() => {
-    d = new Date();
-    htime = d.getHours();
-    mtime = d.getMinutes();
-    stime = d.getSeconds();
-    hrotation = 30*htime + mtime/2;
-    mrotation = 6*mtime;
-    srotation = 6*stime;
+setInterval(showTime, 1000);
+function showTime() {
+    let hours = document.getElementById('hours');    
+    let minutes = document.getElementById('minutes');
+    let seconds = document.getElementById('seconds');
+    let ampm = document.getElementById('ampm');
 
-    hour.style.transform = `rotate(${hrotation}deg)`;
-    minute.style.transform = `rotate(${mrotation}deg)`;
-    second.style.transform = `rotate(${srotation}deg)`;
-}, 1000);
+    let time = new Date();
+    let hour = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+    ampm.innerHTML = "AM";
+  
+    if (hour > 11) {
+        hour -= 12;
+        ampm.innerHTML = "PM";
+    }
+    if (hour == 0) {
+        hour = 12;
+        ampm.innerHTML = "AM";
+    }
+  
+    hour = hour < 10 ? "0" + hour : hour;
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+    
+    hours.innerHTML = hour;
+    minutes.innerHTML = min;
+    seconds.innerHTML = sec;
+}
+showTime();

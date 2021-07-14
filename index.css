@@ -1,48 +1,107 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: consolas;
     box-sizing: border-box;
 }
 
-body{
-    background: #333;
-}
-
-#clockContainer{  
+section{
     position: relative;
-    width: 40vw; 
-    height: 40vw;
-    margin: 3rem auto;
-    background: url(clock.png) no-repeat;
-    background-size: 100%;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(59, 39, 116);
 }
-
-#hour, #minute, #second{
+section::before{
+    content: '';
     position: absolute;
-    background: black;
-    border-radius: 10px; 
-    transform-origin: bottom;
+    top: 5%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    border-radius: 1rem;
+    background: linear-gradient(#ffdc13,#ff2424);
+    animation: animateBefore 3s ease-in-out infinite;
+}
+section::after{
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    width: 250px;
+    height: 250px;
+    border-radius: 1rem;
+    background: linear-gradient(#de0ff9,#0145ff);
+    animation: animateAfter 3s ease-in-out infinite;
+}
+@keyframes animateBefore {
+    0%,100%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-700px);
+    }
+    50%{
+        transform: translate(-700px, 200px);
+    }
+    75%{
+        transform: translate(0, 200px);
+    }
+}
+@keyframes animateAfter {
+    0%,100%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(700px);
+    }
+    50%{
+        transform: translate(700px, -200px);
+    }
+    75%{
+        transform: translate(0, -200px);
+    }
 }
 
-#hour{
-    width: 1.8%;
-    height: 25%;
-    top: 25%;
-    left: 48.85%;
-    opacity: 0.8;  
+.clock{
+    position: relative;
+    width: 700px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 1.3rem;
+    border: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
 }
-#minute{
-    width: 1.6%;
-    height: 30%;
-    top: 19%;
-    left: 48.9%;
-    opacity: 0.8;  
+.clock .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
-#second{
-    width: 1%;
-    height: 40%;
-    top: 9%;
-    left: 49.25%;
-    opacity: 0.8; 
-    
+.clock .container h2{
+    color: #fff;
+    font-size: 6em;
+}
+.clock .container h2:nth-child(odd){
+    padding: 5px 15px;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: rgba(255, 255, 255, 0.2);
+    margin: 0 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.clock .container h2#second{
+    color: #f9d924;
+}
+#ampm{
+    position: relative;
+    top: -50px;
+    font-size: 2em;
+    color: #fff;
+    font-weight: 800;
 }
