@@ -1,8 +1,50 @@
+@media  screen and (max-width:1116px) {
+  
+    
+       .extra::before{
+        background: linear-gradient(#ffdc13,#ff2424);
+       }
+       .extra::after{
+        background: linear-gradient(#de0ff9,#0145ff);
+       }
+       section::before{
+           display: none;
+       }
+       section::after{
+           display: none;
+       }
+}
+
+@media screen and (max-width:580px) {
+
+     .clock .container {
+        opacity: 0;
+    }
+    #hours{
+        opacity: 2;
+    }
+    .dot{
+        opacity: 1;
+    }
+    #minutes{
+        opacity: 1;
+    }
+    #seconds{
+        opacity: 1;
+    }
+
+}
+
 *{
     margin: 0;
     padding: 0;
     font-family: consolas;
     box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100%;
 }
 
 section{
@@ -13,6 +55,7 @@ section{
     justify-content: center;
     align-items: center;
     background: rgb(59, 39, 116);
+    z-index: 3;
 }
 section::before{
     content: '';
@@ -21,9 +64,11 @@ section::before{
     right: 10%;
     width: 300px;
     height: 300px;
+    z-index: 2;
     border-radius: 1rem;
     background: linear-gradient(#ffdc13,#ff2424);
     animation: animateBefore 3s ease-in-out infinite;
+    /* display: none; */
 }
 section::after{
     content: '';
@@ -32,9 +77,45 @@ section::after{
     left: 10%;
     width: 250px;
     height: 250px;
+    z-index: 2;
     border-radius: 1rem;
     background: linear-gradient(#de0ff9,#0145ff);
     animation: animateAfter 3s ease-in-out infinite;
+    /* display: none; */
+    
+}
+.extra{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(59, 39, 116);
+}
+.extra::before{
+    content: '';
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    border-radius: 1rem;
+    /* background: linear-gradient(#ffdc13,#ff2424); */
+    animation: animateBefore2 3s ease-in-out infinite;
+    
+}
+.extra::after{
+    content: '';
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    border-radius: 1rem;
+    /* background: linear-gradient(#de0ff9,#0145ff); */
+    animation: animateAfter2 3s ease-in-out infinite;
+    animation-delay: 3.7s;
 }
 @keyframes animateBefore {
     0%,100%{
@@ -65,26 +146,65 @@ section::after{
     }
 }
 
+@keyframes animateBefore2 {
+    0%{
+        transform: translate(0px , 0px);
+    }
+    25%{
+        transform: translate(-200px,0px);
+    }
+    50%{
+        transform: translate(-200px ,130px);
+    }
+    75%{
+        transform: translate(0px , 130px);
+    }
+    100%{
+        transform: translate(0px ,0px);
+    }
+}
+@keyframes animateAfter2 {
+    0%{
+        transform: translate(-200px , 130px);
+    }
+    25%{
+        transform: translate(00px,130px);
+    }
+    50%{
+        transform: translate(0px ,0px);
+    }
+    75%{
+        transform: translate(-200px , 0px);
+    }
+    100%{
+        transform: translate(-200px ,130px);
+    }
+}
+
+
+
 .clock{
     position: relative;
-    width: 700px;
-    height: 250px;
+    width: 70%;
+    height: 35%;
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     border-radius: 1.3rem;
     border: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
+    
 }
 .clock .container{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    
 }
 .clock .container h2{
     color: #fff;
-    font-size: 6em;
+    font-size: 3em;
 }
 .clock .container h2:nth-child(odd){
     padding: 5px 15px;
@@ -94,10 +214,16 @@ section::after{
     margin: 0 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
+    width: 20%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .clock .container h2#second{
     color: #f9d924;
 }
+
 #ampm{
     position: relative;
     top: -50px;
